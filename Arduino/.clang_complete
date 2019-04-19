@@ -1,0 +1,22 @@
+-IC:\Users\ATI\.platformio\packages\framework-arduinoavr\cores\arduino
+-IC:\Users\ATI\.platformio\packages\framework-arduinoavr\variants\mega
+-ID:\Unity Projects\GameJockey-v4\Arduino\lib\CmdMessenger
+-ID:\Unity Projects\GameJockey-v4\Arduino\.piolibdeps\FastLED_ID126
+-IC:\Users\ATI\.platformio\packages\framework-arduinoavr\libraries\__cores__\arduino\SoftwareSerial\src
+-IC:\Users\ATI\.platformio\lib\FastLED_ID126
+-IC:\Users\ATI\.platformio\packages\framework-arduinoavr\libraries\__cores__\arduino\EEPROM\src
+-IC:\Users\ATI\.platformio\packages\framework-arduinoavr\libraries\__cores__\arduino\HID\src
+-IC:\Users\ATI\.platformio\packages\framework-arduinoavr\libraries\__cores__\arduino\SPI\src
+-IC:\Users\ATI\.platformio\packages\framework-arduinoavr\libraries\__cores__\arduino\Wire\src
+-IC:\Users\ATI\.platformio\packages\toolchain-atmelavr\avr\include
+-IC:\Users\ATI\.platformio\packages\toolchain-atmelavr\lib\gcc\avr\5.4.0\include
+-IC:\Users\ATI\.platformio\packages\toolchain-atmelavr\lib\gcc\avr\5.4.0\include-fixed
+-IC:\Users\ATI\.platformio\packages\tool-unity
+-ID:\Unity Projects\GameJockey-v4\Arduino\include
+-ID:\Unity Projects\GameJockey-v4\Arduino\src
+-DPLATFORMIO=30606
+-DARDUINO_AVR_MEGA2560
+-DF_CPU=16000000L
+-DARDUINO_ARCH_AVR
+-DARDUINO=10805
+-D__AVR_ATmega2560__
