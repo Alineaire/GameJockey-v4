@@ -14,5 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: My Game Track
   BPM: 90
-  assets: []
-  scenarios: []
+  assets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  scenarios:
+  - actions:
+    - inputType: {fileID: 0}
+      behaviour: {fileID: 0}
+    obstacles: {fileID: 0}
+  - actions:
+    - inputType: {fileID: 0}
+      behaviour: {fileID: 0}
+    - inputType: {fileID: 0}
+      behaviour: {fileID: 0}
+    - inputType: {fileID: 0}
+      behaviour: {fileID: 0}
+    - inputType: {fileID: 0}
+      behaviour: {fileID: 0}
+    obstacles: {fileID: 0}
+  - actions: []
+    obstacles: {fileID: 0}
+  - actions: []
+    obstacles: {fileID: 0}
