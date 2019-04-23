@@ -4,17 +4,25 @@ using UnityEngine;
 
 namespace GameJockey_v4
 {
-    [CreateAssetMenu(fileName = "track", menuName = "GameJockey/Game Track", order = 1)]
+    [CreateAssetMenu(fileName = "track", menuName = "GameJockey/Game Sample", order = 1)]
     [System.Serializable]
     public class GameSample : ScriptableObject
     {
-        // Settings
-        public new string name = "My Game Track";
+        [Header("Sample Datas")]
+        public new string name = "My Game Sample";
+        public string author = "Alineaire";
         public int BPM = 90;
+        public int duration = 300; // in seconds
 
+        [Header("Assets")]
         // Assets
         public GameObject[] assets;
 
+        [Header("Global scenario settings")]
+        // Players
+        public string[] players;
+
+        [Header("Scenarios")]
         // Scenarios
         public Scenario[] scenarios;
     }

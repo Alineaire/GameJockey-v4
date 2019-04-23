@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8745248ae161f2746a714f0d11a49aad, type: 3}
+  m_Name: Demo for project
+  m_EditorClassIdentifier: 
+  name: Demo for project
+  author: Alineaire
+  BPM: 110
+  duration: 420
+  assets:
+  - {fileID: 1564140108145572243, guid: 09216f4c6b442cd43b08c35c29af9374, type: 3}
+  - {fileID: 7565751735638389688, guid: c28c094c02b3e474f88e0e4d40676225, type: 3}
+  - {fileID: 9220817631499913086, guid: 13fa282117814c64796f402da1c18d33, type: 3}
+  - {fileID: 952331702894487530, guid: 056dd8a9eccb1f54888c9a509cb66e49, type: 3}
+  - {fileID: 5538261295644083313, guid: 1dce9db38f48e49479ebbb7450926cc4, type: 3}
+  players:
+  - PlayerB
+  - PlayerB
+  - PlayerB
+  - PlayerB
+  scenarios:
+  - actions:
+    - inputType: {fileID: 0}
+      behaviour: {fileID: 0}
+    obstacle: ObstacleB
+    camera: CameraB
+    light: LightB
+    environment: RoadB

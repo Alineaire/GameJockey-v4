@@ -5,6 +5,7 @@ using UnityEditor;
 
 namespace GameJockey_v4
 {
+    /*
     [CustomEditor(typeof(GameJockey))]
     public class GameJockeyEditor : Editor
     {
@@ -38,5 +39,5 @@ namespace GameJockey_v4
 
             GUILayout.EndHorizontal();
         }
-    }
+    }*/
 }

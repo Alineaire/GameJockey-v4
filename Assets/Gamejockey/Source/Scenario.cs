@@ -8,6 +8,9 @@ namespace GameJockey_v4
     public class Scenario
     {
         public Action[] actions;
-        public Obstacle obstacles;
+        public string obstacle;
+        public string camera;
+        public string light;
+        public string environment;
     }
 }

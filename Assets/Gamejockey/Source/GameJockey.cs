@@ -4,10 +4,20 @@ using UnityEngine;
 
 namespace GameJockey_v4
 {
+    // define User interactions with other classes
     public class GameJockey : MonoBehaviour
     {
-        public GameSample[] samples;
-        public GameTrack trackA, trackB;
+        // Singleton
+        private static GameJockey setup;
+        public static GameJockey Setup
+        {
+            get { return setup ?? (setup = new GameObject("Game Jockey").AddComponent<GameJockey>()); }
+            private set { setup = value; }
+        }
+
+        // Parameters
+        public GameSample[] samples; // replace it with AssetBundle with zip(Assets+XML) in GameJockey_v4.1
+        public List<TrackPlayer> trackPlayers;
 
         // Péripherique
 
@@ -16,59 +26,39 @@ namespace GameJockey_v4
 
         // Methods
         // Create a track with selected sample by creating all assets and behaviour during time
-        public void LoadTrack(int _index)
+        public void LoadSample(int _sampleIndex, int _trackPlayerIndex)
         {
-            if(_index == 0)
+            if (_sampleIndex > samples.Length
+                || _sampleIndex < 0
+                || _trackPlayerIndex > trackPlayers.Count
+                || _trackPlayerIndex < 0)
+                return;
+
+            Debug.Log("Loading " + samples[_sampleIndex].name + " on Track " + _trackPlayerIndex);
+        }
+
+        // Function for UI functions
+        public void LoadSampleToTrackA(int _sampleIndex)
+        {
+            LoadSample(_sampleIndex, 0);
+        }
+
+        // Function for UI functions
+        public void LoadSampleToTrackB(int _sampleIndex)
+        {
+            LoadSample(_sampleIndex, 1);
+        }
+
+        public void Play(int _trackNumber)
+        {
+            if(_trackNumber == 0)
             {
-                if(trackA.sceneTarget == null)
-                {
-                    trackA.sceneTarget = new GameObject();
-                    trackA.sceneTarget.name = "TRACK A";
-                    CreateTrackContent(trackA);
-                }
-                else
-                {
-                    DestroyImmediate(trackA.sceneTarget);
-                    trackA.sceneTarget = null;
-                }
+                trackPlayers[0].PlayTrack();
             }
             else
             {
-                if (trackB.sceneTarget == null)
-                {
-                    trackB.sceneTarget = new GameObject();
-                    trackB.sceneTarget.name = "TRACK B";
-                    CreateTrackContent(trackB);
-                }
-                else
-                {
-                    DestroyImmediate(trackB.sceneTarget);
-                    trackB.sceneTarget = null;
-                }
-                
+                trackPlayers[1].PlayTrack();
             }
         }
-
-        void CreateTrackContent(GameTrack _track)
-        {
-            // player creation
-            /*for(int i=0; i<activePlayers; i++)
-            {
-                List<GameObject> _players;
-            }*/
-        }
-
-        public void UnloadTrack(int _pistIndex)
-        {
-
-        }
-    }
-
-    [System.Serializable]
-    public class GameTrack
-    {
-        public GameSample sample;
-        public GameObject sceneTarget;
-        public GameObject[] players;
     }
 }
