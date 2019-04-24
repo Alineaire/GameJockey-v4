@@ -10,17 +10,25 @@ namespace GameJockey_v4
         // Singleton
         public static GameJockey setup = null;
 
+        public enum TrackModificationEnum
+        {
+            Left,
+            Right,
+            Both
+        };
+
         // Parameters
         public GameSample[] samples; // replace it with AssetBundle with zip(Assets+XML) in GameJockey_v4.1
-        public int trackNumber = 2;
-        private List<TrackPlayer> trackPlayers;
 
-        // Péripherique
+        [HideInInspector]
+        public int trackNumber = 2; // for 4.0 version, should always stay equal 2
+        public TrackModificationEnum trackModification = TrackModificationEnum.Left;
+        private List<TrackPlayer> trackPlayers;
 
         // Players
         [Header("Players configuration")]
-        public int activePlayers = 4; // issue if we change active player in live + issue if we load track A or B with other player number
-
+        public bool detectPlayerInputs = true;
+        public PlayerInput[] playerInputs;
 
 
         // Methods
@@ -37,6 +45,13 @@ namespace GameJockey_v4
             {
                 trackPlayers.Add(_track);
             }
+
+            
+        }
+
+        private void Start()
+        {
+            UIManager.setup.ChangeGameComponentAccess(true, false);
         }
 
         // Create a track with selected sample by creating all assets and behaviour during time
@@ -74,6 +89,11 @@ namespace GameJockey_v4
             {
                 trackPlayers[1].PlayTrack();
             }
+        }
+
+        public void ChangeTrackComponentsVisibility(TrackPlayer.TrackComponentEnum _component, int _track, bool _visibility)
+        {
+            trackPlayers[0].SetTrackComponentVisibility(_component, _visibility);
         }
     }
 }

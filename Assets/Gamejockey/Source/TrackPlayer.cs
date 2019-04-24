@@ -14,14 +14,21 @@ namespace GameJockey_v4
         // Scene Structure
         public GameObject[] players;
         public GameObject trackGameObject;
+        public GameObject currentCamera, currentLight, currentAvatars, currentObstacle, currentEnvironment;
+
+        public enum TrackComponentEnum
+        {
+            camera,
+            light,
+            avatars,
+            obstacle,
+            environment
+        };
 
         void CreateTrackContent(GameSample _sample)
         {
             GameObject _camera;
             GameObject _light;
-            GameObject _players;
-            GameObject _road;
-            GameObject _obstacle;
 
             // reset Game Object Track
             if (trackGameObject != null)
@@ -35,11 +42,34 @@ namespace GameJockey_v4
 
             foreach(var _scenario in referenceSample.scenarios)
             {
-                GameObject _scenarioGameObject = CreateGameObjectGroup("Scenario - (name)", trackGameObject.transform);
-                CreateGameObjectGroup("Players", _scenarioGameObject.transform);
-                CreateGameObjectGroup("Road", _scenarioGameObject.transform);
-                CreateGameObjectGroup("Obstacle", _scenarioGameObject.transform);
+                GameObject _scenarioGameObject;
+                GameObject _playerGroup;
+                GameObject _environmentGroup;
+                GameObject _obstacleGroup;
+
+                // Create scenario
+                _scenarioGameObject = CreateGroup("Scenario - (name)", trackGameObject.transform);
+
+                // Create uniform-game-sample groups
+                _playerGroup = CreateGroup("Players", _scenarioGameObject.transform);
+                _environmentGroup = CreateGameObjectByName(_scenario.environment, _scenarioGameObject.transform);
+                _obstacleGroup = CreateGameObjectByName(_scenario.obstacle, _scenarioGameObject.transform);
+
+                // Create Players
+                for(int _playerIndex=0; _playerIndex < referenceSample.players.Length; _playerIndex++)
+                {
+                    GameObject _playerInstance = CreateGameObjectByName(referenceSample.players[_playerIndex].playerAsset, _playerGroup.transform);
+                    _playerInstance.transform.position = referenceSample.players[_playerIndex].defaultPosition;
+                }
+
+                currentAvatars = _playerGroup;
+                currentEnvironment = _environmentGroup;
+                currentObstacle = _obstacleGroup;
             }
+
+            // Set Global current GameObject
+            currentCamera = _camera;
+            currentLight = _light;
 
             // Reset Track UI
             trackUI.SetTrackName(referenceSample.name);
@@ -48,7 +78,7 @@ namespace GameJockey_v4
             trackUI.SetDuration(referenceSample.duration.ToString());
         }
 
-        GameObject CreateGameObjectGroup(string _name, Transform _parent)
+        GameObject CreateGroup(string _name, Transform _parent)
         {
             GameObject _tempGameObject = new GameObject(_name);
 
@@ -68,6 +98,45 @@ namespace GameJockey_v4
 
             _tempGameObject.transform.parent = trackGameObject.transform;
             return _tempGameObject;
+        }
+
+        GameObject CreateGameObjectByName(string _assetName, Transform _parent)
+        {
+            GameObject _tempGameObject = Instantiate(
+                JockeyUtilities.FindAssetByName(
+                    referenceSample.assets,
+                    _assetName
+                    )
+                    );
+
+            _tempGameObject.transform.parent = _parent;
+            return _tempGameObject;
+        }
+
+        public void SetTrackComponentVisibility(TrackComponentEnum _component, bool _visbility)
+        {
+            // if no referenceSample loaded, it shouldnt find GameObject to Active
+            if (referenceSample == null)
+                return;
+
+            switch(_component)
+            {
+                case TrackComponentEnum.camera:
+                    currentCamera.SetActive(_visbility);
+                    break;
+                case TrackComponentEnum.light:
+                    currentLight.SetActive(_visbility);
+                    break;
+                case TrackComponentEnum.avatars:
+                    currentAvatars.SetActive(_visbility);
+                    break;
+                case TrackComponentEnum.obstacle:
+                    currentObstacle.SetActive(_visbility);
+                    break;
+                case TrackComponentEnum.environment:
+                    currentEnvironment.SetActive(_visbility);
+                    break;
+            }
         }
 
         public void PlayTrack()

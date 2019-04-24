@@ -23,10 +23,18 @@ MonoBehaviour:
   - {fileID: 952331702894487530, guid: 056dd8a9eccb1f54888c9a509cb66e49, type: 3}
   - {fileID: 5538261295644083313, guid: 1dce9db38f48e49479ebbb7450926cc4, type: 3}
   players:
-  - PlayerB
-  - PlayerB
-  - PlayerB
-  - PlayerB
+  - playerAsset: PlayerB
+    inputIndex: 0
+    defaultPosition: {x: 3, y: 0, z: 0}
+  - playerAsset: PlayerB
+    inputIndex: 1
+    defaultPosition: {x: 1, y: 0, z: 0}
+  - playerAsset: PlayerB
+    inputIndex: 2
+    defaultPosition: {x: -1, y: 0, z: 0}
+  - playerAsset: PlayerB
+    inputIndex: 3
+    defaultPosition: {x: -3, y: 0, z: 0}
   camera: CameraB
   light: LightB
   scenarios:

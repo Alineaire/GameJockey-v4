@@ -20,12 +20,21 @@ namespace GameJockey_v4
 
         [Header("Global scenario settings")]
         // Players
-        public string[] players;
+        public PlayerSampleParams[] players;
+        //public string[] players;
         public string camera;
         public string light;
 
         [Header("Scenarios")]
         // Scenarios
         public Scenario[] scenarios;
+    }
+
+    [System.Serializable]
+    public class PlayerSampleParams
+    {
+        public string playerAsset;
+        public int inputIndex;
+        public Vector3 defaultPosition;
     }
 }
