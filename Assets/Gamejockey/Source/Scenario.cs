@@ -9,8 +9,6 @@ namespace GameJockey_v4
     {
         public Action[] actions;
         public string obstacle;
-        public string camera;
-        public string light;
         public string environment;
     }
 }

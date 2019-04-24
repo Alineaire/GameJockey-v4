@@ -21,6 +21,8 @@ namespace GameJockey_v4
         [Header("Global scenario settings")]
         // Players
         public string[] players;
+        public string camera;
+        public string light;
 
         [Header("Scenarios")]
         // Scenarios

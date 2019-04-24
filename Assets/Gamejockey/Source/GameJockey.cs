@@ -8,23 +8,37 @@ namespace GameJockey_v4
     public class GameJockey : MonoBehaviour
     {
         // Singleton
-        private static GameJockey setup;
-        public static GameJockey Setup
-        {
-            get { return setup ?? (setup = new GameObject("Game Jockey").AddComponent<GameJockey>()); }
-            private set { setup = value; }
-        }
+        public static GameJockey setup = null;
 
         // Parameters
         public GameSample[] samples; // replace it with AssetBundle with zip(Assets+XML) in GameJockey_v4.1
-        public List<TrackPlayer> trackPlayers;
+        public int trackNumber = 2;
+        private List<TrackPlayer> trackPlayers;
 
         // Péripherique
 
         // Players
+        [Header("Players configuration")]
         public int activePlayers = 4; // issue if we change active player in live + issue if we load track A or B with other player number
 
+
+
         // Methods
+        private void Awake()
+        {
+            if (setup == null)
+                setup = this;
+            else if (setup != this)
+                Destroy(gameObject);
+
+            trackPlayers = new List<TrackPlayer>();
+            TrackPlayer[] _tracks = GetComponentsInChildren<TrackPlayer>();
+            foreach (TrackPlayer _track in _tracks)
+            {
+                trackPlayers.Add(_track);
+            }
+        }
+
         // Create a track with selected sample by creating all assets and behaviour during time
         public void LoadSample(int _sampleIndex, int _trackPlayerIndex)
         {
@@ -35,6 +49,7 @@ namespace GameJockey_v4
                 return;
 
             Debug.Log("Loading " + samples[_sampleIndex].name + " on Track " + _trackPlayerIndex);
+            trackPlayers[_trackPlayerIndex].LoadSample(samples[_sampleIndex]);
         }
 
         // Function for UI functions

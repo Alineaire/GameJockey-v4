@@ -27,11 +27,11 @@ MonoBehaviour:
   - Player
   - Player
   - Player
+  camera: Camera
+  light: Light
   scenarios:
   - actions:
     - inputType: {fileID: 0}
       behaviour: {fileID: 0}
     obstacle: Obstacle
-    camera: Camera
-    light: Light
     environment: Road
