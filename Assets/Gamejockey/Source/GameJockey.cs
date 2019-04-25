@@ -8,25 +8,19 @@ namespace GameJockey_v4
     public class GameJockey : MonoBehaviour
     {
         // Singleton
+        [Header("Session setup")]
         public static GameJockey setup = null;
-
-        public enum TrackModificationEnum
-        {
-            Left,
-            Right,
-            Both
-        };
 
         // Parameters
         public GameSample[] samples; // replace it with AssetBundle with zip(Assets+XML) in GameJockey_v4.1
+        public TrackMixer[] mixers;
 
         [HideInInspector]
         public int trackNumber = 2; // for 4.0 version, should always stay equal 2
-        public TrackModificationEnum trackModification = TrackModificationEnum.Left;
         private List<TrackPlayer> trackPlayers;
 
         // Players
-        [Header("Players configuration")]
+        [Header("Players setup")]
         public bool detectPlayerInputs = true;
         public PlayerInput[] playerInputs;
 
@@ -47,11 +41,6 @@ namespace GameJockey_v4
             }
 
             
-        }
-
-        private void Start()
-        {
-            UIManager.setup.ChangeGameComponentAccess(true, false);
         }
 
         // Create a track with selected sample by creating all assets and behaviour during time
@@ -93,7 +82,12 @@ namespace GameJockey_v4
 
         public void ChangeTrackComponentsVisibility(TrackPlayer.TrackComponentEnum _component, int _track, bool _visibility)
         {
-            trackPlayers[0].SetTrackComponentVisibility(_component, _visibility);
+            trackPlayers[0].SetSpecificTrackComponentVisibility(_component, _visibility);
+        }
+
+        public void RefreshSampleList()
+        {
+            UIManager.setup.RefreshUISampleList(samples);
         }
     }
 }

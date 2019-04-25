@@ -113,7 +113,19 @@ namespace GameJockey_v4
             return _tempGameObject;
         }
 
-        public void SetTrackComponentVisibility(TrackComponentEnum _component, bool _visbility)
+        public void SetTrackComponentVisibility(bool _visbility)
+        {
+            if (referenceSample == null)
+                return;
+
+            currentCamera.SetActive(_visbility);
+            currentLight.SetActive(_visbility);
+            currentAvatars.SetActive(_visbility);
+            currentObstacle.SetActive(_visbility);
+            currentEnvironment.SetActive(_visbility);
+        }
+
+        public void SetSpecificTrackComponentVisibility(TrackComponentEnum _component, bool _visbility)
         {
             // if no referenceSample loaded, it shouldnt find GameObject to Active
             if (referenceSample == null)

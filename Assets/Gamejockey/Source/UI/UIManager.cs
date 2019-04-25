@@ -10,7 +10,9 @@ namespace GameJockey_v4
         // c'est toi le singleton
         public static UIManager setup = null;
 
-        public GameComponentButtons trackAGameComponents, trackBGameComponents;
+        public GameObject sampleListParentGameObject;
+
+        public GameComponentButtons[] gameComponentTracks;
 
         private void Awake()
         {
@@ -20,67 +22,21 @@ namespace GameJockey_v4
                 Destroy(gameObject);
         }
 
-        public void ChangeTrackMixerState(float _value)
+        // SAMPLE LIST
+        public void RefreshUISampleList(GameSample[] _samples)
         {
-            if (_value <= 0.25f)
-            {
-                GameJockey.setup.trackModification = GameJockey.TrackModificationEnum.Left;
-                ChangeGameComponentAccess(true, false);
-            }
-            else if (_value >= 0.75f)
-            {
-                GameJockey.setup.trackModification = GameJockey.TrackModificationEnum.Right;
-                ChangeGameComponentAccess(false, true);
-            }
-            else
-            {
-                GameJockey.setup.trackModification = GameJockey.TrackModificationEnum.Both;
-                ChangeGameComponentAccess(true, true);
-            }
-        }
+            if (sampleListParentGameObject == null)
+                return;
 
-        public void ChangeGameComponentAccess(bool _trackA, bool _trackB)
-        {
-            if(_trackA && !_trackB)
+            /*foreach(Transform _sample in sampleListParentGameObject.transform)
             {
-                ChangeTrackToggleStateInteractible(trackAGameComponents, true);
-                ChangeTrackToggleStateInteractible(trackBGameComponents, false);
-                ForceChangeTrackStateIsOn(trackAGameComponents, true);
-                ForceChangeTrackStateIsOn(trackBGameComponents, false);
-            }
-            else if (!_trackA && _trackB)
-            {
-                ChangeTrackToggleStateInteractible(trackAGameComponents, false);
-                ChangeTrackToggleStateInteractible(trackBGameComponents, true);
-                ForceChangeTrackStateIsOn(trackAGameComponents, false);
-                ForceChangeTrackStateIsOn(trackBGameComponents, true);
-            }
-            else
-            {
-                ChangeTrackToggleStateInteractible(trackAGameComponents, true);
-                ChangeTrackToggleStateInteractible(trackBGameComponents, true);
-            }
-            
-        }
+                DestroyImmediate(_sample.gameObject);
+            }*/
 
-        void ChangeTrackToggleStateInteractible(GameComponentButtons _toggle, bool _interactable)
-        {
-            _toggle.camera.interactable = _interactable;
-            _toggle.light.interactable = _interactable;
-            _toggle.avatars.interactable = _interactable;
-            _toggle.obstacle.interactable = _interactable;
-            _toggle.environment.interactable = _interactable;
-        }
-
-        void ForceChangeTrackStateIsOn(GameComponentButtons _toggle, bool _isOn)
-        {
-            _toggle.camera.isOn = _isOn;
-            _toggle.light.isOn = _isOn;
-            _toggle.avatars.isOn = _isOn;
-            _toggle.obstacle.isOn = _isOn;
-            _toggle.environment.isOn = _isOn;
+            // TODO create new list
         }
     }
+
 
     [System.Serializable]
     public class GameComponentButtons

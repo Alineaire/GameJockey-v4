@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace GameJockey_v4
 {
-    /*
+    
     [CustomEditor(typeof(GameJockey))]
     public class GameJockeyEditor : Editor
     {
@@ -16,28 +16,12 @@ namespace GameJockey_v4
             GameJockey jockey = (GameJockey)target;
 
             GUILayout.Space(5);
-            GUILayout.BeginHorizontal();
-
-            GUILayout.Label("Track A");
-            GUILayout.Label("Track B");
-
-            GUILayout.EndHorizontal();
-
-            GUILayout.BeginHorizontal();
 
             // play left track A
-            if (GUILayout.Button("Play"))
+            if (GUILayout.Button("Refresh Sample List"))
             {
-                jockey.LoadTrack(0);
+                jockey.RefreshSampleList();
             }
-
-            // play left track B
-            if (GUILayout.Button("Play"))
-            {
-                jockey.LoadTrack(1);
-            }
-
-            GUILayout.EndHorizontal();
         }
-    }*/
+    }
 }
