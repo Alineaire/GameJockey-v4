@@ -77,6 +77,14 @@ namespace GameJockey_v4
             }
         }
 
+        public void RefreshMixers()
+        {
+            foreach(TrackMixer _mixer in mixers)
+            {
+                _mixer.RefreshEditableTracks();
+            }
+        }
+
         public void ChangeTrackComponentsVisibility(TrackPlayer.TrackComponentEnum _component, int _track, bool _visibility)
         {
             trackPlayers[0].SetSpecificTrackComponentVisibility(_component, _visibility);
@@ -85,6 +93,16 @@ namespace GameJockey_v4
         public void RefreshSampleList()
         {
             UIManager.setup.RefreshUISampleList(samples);
+        }
+
+        public bool TryInvertComponent(int _track)
+        {
+            // For now, only mixer 0 is used
+            bool _b = mixers[0].CanInvertComponent(_track);
+
+            // inverser les set active
+
+            return _b;
         }
     }
 }

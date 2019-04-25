@@ -35,12 +35,43 @@ namespace GameJockey_v4
 
             // TODO create new list
         }
+
+        public void PushGameComponentButton(Toggle _sourceToggle, int _track)
+        {
+            if(GameJockey.setup.TryInvertComponent(_track))
+            {
+                InvertComponentToggle(_sourceToggle);
+            }
+        }
+
+        public void SetMixerToggleInteractable(int _track, bool _interactible)
+        {
+            gameComponentTracks[_track].camera.interactable = _interactible;
+            gameComponentTracks[_track].light.interactable = _interactible;
+            gameComponentTracks[_track].players.interactable = _interactible;
+            gameComponentTracks[_track].objects.interactable = _interactible;
+            gameComponentTracks[_track].environment.interactable = _interactible;
+        }
+
+        public void SetMixerToggleisOn(int _track, bool _isOn)
+        {
+            gameComponentTracks[_track].camera.isOn = _isOn;
+            gameComponentTracks[_track].light.isOn = _isOn;
+            gameComponentTracks[_track].players.isOn = _isOn;
+            gameComponentTracks[_track].objects.isOn = _isOn;
+            gameComponentTracks[_track].environment.isOn = _isOn;
+        }
+
+        public void InvertComponentToggle(Toggle _sourceToggle)
+        {
+            Debug.Log("inversion des Toggle");
+        }
     }
 
 
     [System.Serializable]
     public class GameComponentButtons
     {
-        public Toggle camera, light, avatars, obstacle, environment;
+        public Toggle camera, light, players, objects, environment;
     }
 }

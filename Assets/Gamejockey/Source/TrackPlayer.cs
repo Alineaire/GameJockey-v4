@@ -36,6 +36,7 @@ namespace GameJockey_v4
             CreateTrackContent();
             RefreshUI();
             RefreshEditableTrack();
+            // TODO n'activer que le Track sur lequel on se trouve dans la Timeline
         }
 
         // Sample -> Track
@@ -72,11 +73,29 @@ namespace GameJockey_v4
                 GameObject          _scenarioGroup;
                 GameObject          _objectGroup;
                 GameObject          _environment;
+                GameObject          _playersGroup;
                 List<GameObject>    _objectList;
 
                 // Create Groups
                 _scenarioGroup  = CreateGroup("Scenario " + _scenario.name, trackSceneGameObject.transform);
+                _playersGroup = CreateGroup("Players", _scenarioGroup.transform);
                 _objectGroup    = CreateGroup("Objects", _scenarioGroup.transform);
+
+                // Create Players
+                if(_scenario.useDefaultPlayers)
+                {
+                    foreach(PlayerSampleParams _player in sample.defaultPlayers)
+                    {
+                        CreateGameObjectByName(_player.playerAsset, _objectGroup.transform);
+                    }
+                }
+                else
+                {
+                    foreach (PlayerSampleParams _player in _scenario.newPlayers)
+                    {
+                        CreateGameObjectByName(_player.playerAsset, _objectGroup.transform);
+                    }
+                }
 
                 // Create Objects
                 _objectList = new List<GameObject>();
@@ -108,7 +127,7 @@ namespace GameJockey_v4
 
         void RefreshEditableTrack()
         {
-            SetTrackComponentVisibility(true);
+            GameJockey.setup.RefreshMixers();
         }
 
         // ---------------------------------------------------------------------------------
@@ -151,7 +170,8 @@ namespace GameJockey_v4
 
         public void SetTrackComponentVisibility(bool _visibility)
         {
-            if (trackInstance == null)
+            if (trackInstance == null
+                || trackInstance.camera.current == null)
                 return;
 
             trackInstance.camera.current.SetActive(_visibility);

@@ -20,8 +20,7 @@ namespace GameJockey_v4
 
         [Header("Global scenario settings")]
         // Players
-        public PlayerSampleParams[] players;
-        //public string[] players;
+        public PlayerSampleParams[] defaultPlayers;
         public string camera;
         public string light;
 
@@ -42,6 +41,8 @@ namespace GameJockey_v4
     public class SampleScenario
     {
         public string name;
+        public bool useDefaultPlayers = true;
+        public PlayerSampleParams[] newPlayers;
         public string[] objects;
         public string environment;
     }

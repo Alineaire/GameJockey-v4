@@ -25,6 +25,8 @@ namespace GameJockey_v4
         void ValueToggleChange()
         {
             GameJockey.setup.ChangeTrackComponentsVisibility(trackComponentType, track, toggle.isOn);
+
+            
         }
     }
 }

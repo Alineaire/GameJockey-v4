@@ -1301,15 +1301,7 @@ MonoBehaviour:
   - {fileID: 1605226831}
   trackNumber: 2
   detectPlayerInputs: 1
-  playerInputs:
-  - device: {fileID: 11400000, guid: 8cf879c2a39d7c044a82ce6ab4ae53b8, type: 2}
-  - device: {fileID: 11400000, guid: 8cf879c2a39d7c044a82ce6ab4ae53b8, type: 2}
-  - device: {fileID: 11400000, guid: 8cf879c2a39d7c044a82ce6ab4ae53b8, type: 2}
-  - device: {fileID: 11400000, guid: 8cf879c2a39d7c044a82ce6ab4ae53b8, type: 2}
-  - device: {fileID: 11400000, guid: 8cf879c2a39d7c044a82ce6ab4ae53b8, type: 2}
-  - device: {fileID: 11400000, guid: 8cf879c2a39d7c044a82ce6ab4ae53b8, type: 2}
-  - device: {fileID: 11400000, guid: 8cf879c2a39d7c044a82ce6ab4ae53b8, type: 2}
-  - device: {fileID: 11400000, guid: 8cf879c2a39d7c044a82ce6ab4ae53b8, type: 2}
+  players: []
 --- !u!81 &335213332
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2361,7 +2353,7 @@ GameObject:
   - component: {fileID: 569629757}
   - component: {fileID: 569629759}
   m_Layer: 5
-  m_Name: Obstacle
+  m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4432,7 +4424,7 @@ GameObject:
   - component: {fileID: 865596800}
   - component: {fileID: 865596802}
   m_Layer: 5
-  m_Name: Avatars
+  m_Name: Players
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5017,19 +5009,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackName: Track 2
-  referenceSample: {fileID: 0}
+  sample: {fileID: 0}
   trackUI:
     trackName: {fileID: 504893208}
     bpm: {fileID: 262704390}
     author: {fileID: 1399398121}
     duration: {fileID: 857226454}
   players: []
-  trackGameObject: {fileID: 0}
-  currentCamera: {fileID: 0}
-  currentLight: {fileID: 0}
-  currentAvatars: {fileID: 0}
-  currentObstacle: {fileID: 0}
-  currentEnvironment: {fileID: 0}
+  trackSceneGameObject: {fileID: 0}
+  trackInstance:
+    camera:
+      isActive: 0
+      current: {fileID: 0}
+    light:
+      isActive: 0
+      current: {fileID: 0}
+    scenarios: []
 --- !u!4 &1082514491
 Transform:
   m_ObjectHideFlags: 0
@@ -6964,19 +6959,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackName: Track 1
-  referenceSample: {fileID: 0}
+  sample: {fileID: 0}
   trackUI:
     trackName: {fileID: 1924538927}
     bpm: {fileID: 1134291068}
     author: {fileID: 637483350}
     duration: {fileID: 1084305870}
   players: []
-  trackGameObject: {fileID: 0}
-  currentCamera: {fileID: 0}
-  currentLight: {fileID: 0}
-  currentAvatars: {fileID: 0}
-  currentObstacle: {fileID: 0}
-  currentEnvironment: {fileID: 0}
+  trackSceneGameObject: {fileID: 0}
+  trackInstance:
+    camera:
+      isActive: 0
+      current: {fileID: 0}
+    light:
+      isActive: 0
+      current: {fileID: 0}
+    scenarios: []
 --- !u!4 &1415898898
 Transform:
   m_ObjectHideFlags: 0
@@ -9100,13 +9098,13 @@ MonoBehaviour:
   gameComponentTracks:
   - camera: {fileID: 318841629}
     light: {fileID: 530172502}
-    avatars: {fileID: 2137669874}
-    obstacle: {fileID: 569629758}
+    players: {fileID: 2137669874}
+    objects: {fileID: 569629758}
     environment: {fileID: 1430723447}
   - camera: {fileID: 970262746}
     light: {fileID: 309781469}
-    avatars: {fileID: 865596801}
-    obstacle: {fileID: 2021263731}
+    players: {fileID: 865596801}
+    objects: {fileID: 2021263731}
     environment: {fileID: 1341181471}
 --- !u!1 &1834669143
 GameObject:
@@ -9848,7 +9846,7 @@ GameObject:
   - component: {fileID: 2021263730}
   - component: {fileID: 2021263732}
   m_Layer: 5
-  m_Name: Obstacle
+  m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10801,7 +10799,7 @@ GameObject:
   - component: {fileID: 2137669873}
   - component: {fileID: 2137669875}
   m_Layer: 5
-  m_Name: Avatars
+  m_Name: Players
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
