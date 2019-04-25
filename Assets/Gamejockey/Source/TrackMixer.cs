@@ -21,7 +21,7 @@ namespace GameJockey_v4
 
         private void Start()
         {
-            RefreshEditableTracks();
+            //RefreshEditableTracks();
         }
 
         public void DefineEditableTrack(float _v)
@@ -46,7 +46,6 @@ namespace GameJockey_v4
 
         void RefreshEditableTracks()
         {
-            Debug.Log(tracksToMix.Length);
 
             if (tracksToMix.Length != 2
                 || tracksToMix[0] == null
@@ -57,11 +56,11 @@ namespace GameJockey_v4
             {
                 case TrackModificationEnum.Left:
                     tracksToMix[0].SetTrackComponentVisibility(true);
-                    tracksToMix[0].SetTrackComponentVisibility(false);
+                    tracksToMix[1].SetTrackComponentVisibility(false);
                     break;
                 case TrackModificationEnum.Right:
                     tracksToMix[0].SetTrackComponentVisibility(false);
-                    tracksToMix[0].SetTrackComponentVisibility(true);
+                    tracksToMix[1].SetTrackComponentVisibility(true);
                     break;
                 case TrackModificationEnum.Both:
                     // ca depend de sa mere

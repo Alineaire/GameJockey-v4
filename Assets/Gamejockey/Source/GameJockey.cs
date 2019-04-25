@@ -22,7 +22,7 @@ namespace GameJockey_v4
         // Players
         [Header("Players setup")]
         public bool detectPlayerInputs = true;
-        public PlayerInput[] playerInputs;
+        public Player[] players;
 
 
         // Methods
@@ -39,8 +39,6 @@ namespace GameJockey_v4
             {
                 trackPlayers.Add(_track);
             }
-
-            
         }
 
         // Create a track with selected sample by creating all assets and behaviour during time
@@ -52,7 +50,6 @@ namespace GameJockey_v4
                 || _trackPlayerIndex < 0)
                 return;
 
-            Debug.Log("Loading " + samples[_sampleIndex].name + " on Track " + _trackPlayerIndex);
             trackPlayers[_trackPlayerIndex].LoadSample(samples[_sampleIndex]);
         }
 

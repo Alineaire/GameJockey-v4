@@ -5,10 +5,9 @@ using UnityEngine;
 namespace GameJockey_v4
 {
     [System.Serializable]
-    public class Scenario
+    public class Player
     {
-        public Action[] actions;
-        public string obstacle;
-        public string environment;
+        public string name;
+        public PlayerInput[] playerInputs;
     }
 }

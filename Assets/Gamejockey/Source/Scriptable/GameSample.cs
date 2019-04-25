@@ -27,7 +27,7 @@ namespace GameJockey_v4
 
         [Header("Scenarios")]
         // Scenarios
-        public Scenario[] scenarios;
+        public SampleScenario[] scenarios;
     }
 
     [System.Serializable]
@@ -35,6 +35,14 @@ namespace GameJockey_v4
     {
         public string playerAsset;
         public int inputIndex;
-        public Vector3 defaultPosition;
+        //public Vector3 defaultPosition;
+    }
+
+    [System.Serializable]
+    public class SampleScenario
+    {
+        public string name;
+        public string[] objects;
+        public string environment;
     }
 }
