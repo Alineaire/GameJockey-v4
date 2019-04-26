@@ -104,5 +104,10 @@ namespace GameJockey_v4
 
             return _b;
         }
+
+        public void ChangeTrackComponentsState(TrackPlayer.TrackComponentEnum _component)
+        {
+
+        }
     }
 }

@@ -44,6 +44,16 @@ namespace GameJockey_v4
             RefreshEditableTracks();
         }
 
+        public void TryInvertComponents(int _track, TrackPlayer.TrackComponentEnum _component)
+        {
+            if(trackModification == TrackModificationEnum.Both)
+            {
+                GameJockey.setup.ChangeTrackComponentsState(_component);
+                //UIManager.setup.InvertTogglesState(_track, _component);
+                UIManager.setup.InvertButtonsState(_track, _component);
+            }
+        }
+
         public void RefreshEditableTracks()
         {
 
@@ -57,7 +67,9 @@ namespace GameJockey_v4
                 case TrackModificationEnum.Left:
                     tracksToMix[0].SetTrackComponentVisibility(true);
                     tracksToMix[1].SetTrackComponentVisibility(false);
-                    UIManager.setup.SetMixerToggleInteractable(0, true);
+                    UIManager.setup.SetToggleTransition(0, false);
+                    UIManager.setup.SetToggleTransition(1, false);
+                    UIManager.setup.SetMixerToggleInteractable(0, false);
                     UIManager.setup.SetMixerToggleInteractable(1, false);
                     UIManager.setup.SetMixerToggleisOn(0, true);
                     UIManager.setup.SetMixerToggleisOn(1, false);
@@ -65,8 +77,10 @@ namespace GameJockey_v4
                 case TrackModificationEnum.Right:
                     tracksToMix[0].SetTrackComponentVisibility(false);
                     tracksToMix[1].SetTrackComponentVisibility(true);
+                    UIManager.setup.SetToggleTransition(1, false);
+                    UIManager.setup.SetToggleTransition(0, false);
                     UIManager.setup.SetMixerToggleInteractable(0, false);
-                    UIManager.setup.SetMixerToggleInteractable(1, true);
+                    UIManager.setup.SetMixerToggleInteractable(1, false);
                     UIManager.setup.SetMixerToggleisOn(0, false);
                     UIManager.setup.SetMixerToggleisOn(1, true);
                     break;
@@ -74,6 +88,8 @@ namespace GameJockey_v4
                     // ca depend de sa mere
                     UIManager.setup.SetMixerToggleInteractable(0, true);
                     UIManager.setup.SetMixerToggleInteractable(1, true);
+                    UIManager.setup.SetToggleTransition(0, true);
+                    UIManager.setup.SetToggleTransition(1, true);
                     break;
             }
         }

@@ -5,30 +5,34 @@ using UnityEngine.UI;
 
 namespace GameJockey_v4
 {
-    [RequireComponent(typeof(Toggle))]
-    public class UITrackToggle : MonoBehaviour
+    [RequireComponent(typeof(Button))]
+    public class UITrackButton : MonoBehaviour
     {
+        public enum UIToggleEnum
+        {
+            selected,
+            unselected
+        }
         public TrackPlayer.TrackComponentEnum trackComponentType;
         public int track = 0;
         public TrackMixer mixer;
-        Toggle toggle;
+        public UIToggleEnum toggleState = UIToggleEnum.selected;
+        Button button;
 
         private void Awake()
         {
-            toggle = GetComponent<Toggle>();
+            button = GetComponent<Button>();
         }
 
         private void Start()
         {
-            toggle.onValueChanged.AddListener(delegate { ValueToggleChange(); });
+            button.onClick.AddListener(delegate { Click(); });
         }
 
-        void ValueToggleChange()
+        void Click()
         {
-            //GameJockey.setup.ChangeTrackComponentsVisibility(trackComponentType, track, toggle.isOn);
-            if(toggle.interactable)
+            if (button.interactable)
                 mixer.TryInvertComponents(track, trackComponentType);
-            
         }
     }
 }
