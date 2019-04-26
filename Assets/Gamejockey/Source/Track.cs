@@ -7,7 +7,9 @@ namespace GameJockey_v4
     [System.Serializable]
     public class Track
     {
-        //public List<TrackScenario> players;
+        public string name;
+        public GameObject sceneGameObject;
+        public GameObject[] players;
         public TrackGameComponent camera;
         public TrackGameComponent light;
         public List<TrackScenario> scenarios;
