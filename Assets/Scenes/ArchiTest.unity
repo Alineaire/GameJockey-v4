@@ -1082,13 +1082,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ac718663a9fb84fa070c54a4209a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2102563690}
+  trackPlayer: {fileID: 2102563690}
   samples:
   - {fileID: 11400000, guid: 09cfa6e6e12d79f42af1dc03d1aaf1a1, type: 2}
   - {fileID: 11400000, guid: 37842ec6403921943a6cda83d3598758, type: 2}
   trackNumber: 2
   detectPlayerInputs: 1
-  players: []
 --- !u!81 &335213332
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1198,11 +1197,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 350392595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1064811e507e8524880a6760a8863dc9, type: 3}
+  m_Script: {fileID: 11500000, guid: b55de2f573bd2b748a057deecde1a3ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerSlider: {fileID: 350392597}
-  trackMixer: {fileID: 0}
+  slider: {fileID: 350392597}
+  mixer: {fileID: 1339023902}
+  sliderFilter:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 103
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.25
+      value: 0.5
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 103
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.75
+      value: 1
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 103
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 103
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &384920914
 GameObject:
   m_ObjectHideFlags: 0
@@ -3764,6 +3805,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908713189}
   m_CullTransparentMesh: 0
+--- !u!1 &974007629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 974007630}
+  - component: {fileID: 974007631}
+  m_Layer: 0
+  m_Name: TrackSequencer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &974007630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974007629}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2102563689}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &974007631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974007629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2fc881ccbff3e40a0640de3722d5d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actualSequence: 0
 --- !u!1 &984122236
 GameObject:
   m_ObjectHideFlags: 0
@@ -4402,10 +4487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5482c8fb981864e83f121f407814ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackComponentType: 0
-  track: 0
-  button: {fileID: 0}
-  image: {fileID: 0}
 --- !u!1 &1134291066
 GameObject:
   m_ObjectHideFlags: 0
@@ -4856,6 +4937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071e2c2c18ca32e428f94797fe445b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: []
 --- !u!1 &1234886511
 GameObject:
   m_ObjectHideFlags: 0
@@ -4990,10 +5072,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5482c8fb981864e83f121f407814ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackComponentType: 0
-  track: 0
-  button: {fileID: 0}
-  image: {fileID: 0}
 --- !u!1 &1242534730
 GameObject:
   m_ObjectHideFlags: 0
@@ -5357,6 +5435,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308302180}
   m_CullTransparentMesh: 0
+--- !u!1 &1339023900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1339023901}
+  - component: {fileID: 1339023902}
+  m_Layer: 0
+  m_Name: TrackMixer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1339023901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339023900}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2102563689}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1339023902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339023900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a933cedb973e63246b09086a823d54c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filterMixer: 0
+  filterCamera: 0
+  filterLight: 0
+  filterAvatars: 0
+  filterObjects: 0
+  filterEnvironment: 0
 --- !u!1 &1365448030
 GameObject:
   m_ObjectHideFlags: 0
@@ -6251,10 +6378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5482c8fb981864e83f121f407814ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackComponentType: 0
-  track: 0
-  button: {fileID: 0}
-  image: {fileID: 0}
 --- !u!1 &1551351877
 GameObject:
   m_ObjectHideFlags: 0
@@ -6298,6 +6421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69c421b94e3abb44e9348433559631af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tracksInfo: []
   sampleListParentGameObject: {fileID: 0}
 --- !u!1 &1584589433
 GameObject:
@@ -6866,10 +6990,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5482c8fb981864e83f121f407814ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackComponentType: 0
-  track: 0
-  button: {fileID: 0}
-  image: {fileID: 0}
 --- !u!1 &1632250033
 GameObject:
   m_ObjectHideFlags: 0
@@ -7078,10 +7198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5482c8fb981864e83f121f407814ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackComponentType: 0
-  track: 0
-  button: {fileID: 0}
-  image: {fileID: 0}
 --- !u!1 &1696019536
 GameObject:
   m_ObjectHideFlags: 0
@@ -7216,10 +7332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5482c8fb981864e83f121f407814ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackComponentType: 0
-  track: 0
-  button: {fileID: 0}
-  image: {fileID: 0}
 --- !u!1 &1699719957
 GameObject:
   m_ObjectHideFlags: 0
@@ -7430,7 +7542,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000008351026}
+  m_AnchoredPosition: {x: 10, y: 0.000008351026}
   m_SizeDelta: {x: -10, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1710449395
@@ -7920,10 +8032,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5482c8fb981864e83f121f407814ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackComponentType: 0
-  track: 0
-  button: {fileID: 0}
-  image: {fileID: 0}
 --- !u!1 &1834669143
 GameObject:
   m_ObjectHideFlags: 0
@@ -8520,10 +8628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5482c8fb981864e83f121f407814ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackComponentType: 0
-  track: 0
-  button: {fileID: 0}
-  image: {fileID: 0}
 --- !u!1 &1924538925
 GameObject:
   m_ObjectHideFlags: 0
@@ -8773,10 +8877,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5482c8fb981864e83f121f407814ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackComponentType: 0
-  track: 0
-  button: {fileID: 0}
-  image: {fileID: 0}
 --- !u!1 &2032557431
 GameObject:
   m_ObjectHideFlags: 0
@@ -9161,7 +9261,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1339023901}
+  - {fileID: 974007630}
   m_Father: {fileID: 335213330}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9177,24 +9279,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc628e881f280f4896919837525decb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackName: Track
-  sample: {fileID: 0}
   trackUI:
     trackName: {fileID: 0}
     bpm: {fileID: 0}
     author: {fileID: 0}
     duration: {fileID: 0}
   tracks: []
-  players: []
-  trackSceneGameObject: {fileID: 0}
-  trackInstance:
-    camera:
-      isActive: 0
-      current: {fileID: 0}
-    light:
-      isActive: 0
-      current: {fileID: 0}
-    scenarios: []
 --- !u!1 &2102777393
 GameObject:
   m_ObjectHideFlags: 0
@@ -9522,10 +9612,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5482c8fb981864e83f121f407814ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackComponentType: 0
-  track: 0
-  button: {fileID: 0}
-  image: {fileID: 0}
 --- !u!1 &2113604460
 GameObject:
   m_ObjectHideFlags: 0

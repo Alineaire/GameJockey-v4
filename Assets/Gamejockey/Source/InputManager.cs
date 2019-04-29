@@ -6,6 +6,6 @@ namespace GameJockey_v4
 {
     public class InputManager : MonoBehaviour
     {
-        
+        public Player[] players;
     }
 }

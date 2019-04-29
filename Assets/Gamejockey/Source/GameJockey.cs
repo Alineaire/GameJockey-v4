@@ -19,7 +19,6 @@ namespace GameJockey_v4
         // Players
         [Header("Players setup")]
         public bool detectPlayerInputs = true;
-        public Player[] players;
 
 
         // Methods
