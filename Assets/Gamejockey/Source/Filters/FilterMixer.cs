@@ -24,6 +24,15 @@ namespace GameJockey_v4
             Right
         };
 
+        public enum FilterComponentEnum
+        {
+          Camera,
+          Light,
+          Avatars,
+          Objects,
+          Environment
+        };
+
         //[HideInInspector]
         public FilterMixerEnum filterMixer = FilterMixerEnum.OnlyLeft;
 
@@ -74,47 +83,33 @@ namespace GameJockey_v4
             }
         }
 
-        public void SetCameraFilter(FilterComponentMixerEnum _filter)
+        public void SetComponentFilter(FilterComponentEnum _component, FilterComponentMixerEnum _filter)
         {
-            if (!CanEditComponent())
-                return;
 
-            filterCamera = _filter;
+          if (!CanEditComponent())
+              return;
+
+          switch(_component)
+          {
+            case FilterComponentEnum.Camera:
+              filterCamera = _filter;
+              break;
+            case FilterComponentEnum.Light:
+              filterLight = _filter;
+              break;
+            case FilterComponentEnum.Avatars:
+              filterAvatars = _filter;
+              break;
+            case FilterComponentEnum.Objects:
+              filterObjects = _filter;
+              break;
+            case FilterComponentEnum.Environment:
+              filterEnvironment = _filter;
+              break;
+          }
         }
 
-        public void SetLightFilter(FilterComponentMixerEnum _filter)
-        {
-            if (!CanEditComponent())
-                return;
-
-            filterLight = _filter;
-        }
-
-        public void SetAvatarsFilter(FilterComponentMixerEnum _filter)
-        {
-            if (!CanEditComponent())
-                return;
-
-            filterAvatars = _filter;
-        }
-
-        public void SetObjectsFilter(FilterComponentMixerEnum _filter)
-        {
-            if (!CanEditComponent())
-                return;
-
-            filterObjects = _filter;
-        }
-
-        public void SetEnvironmentFilter(FilterComponentMixerEnum _filter)
-        {
-            if (!CanEditComponent())
-                return;
-
-            filterEnvironment = _filter;
-        }
-
-        bool CanEditComponent()
+        protected bool CanEditComponent()
         {
             if (filterMixer == FilterMixerEnum.Editable)
                 return true;

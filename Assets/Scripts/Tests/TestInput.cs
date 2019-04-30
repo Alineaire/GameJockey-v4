@@ -12,6 +12,7 @@ public class TestInput : MonoBehaviour
 
     private void Update()
     {
+
         for (int buttonIndex = 0; buttonIndex < buttonNumber; buttonIndex++)
         {
             Color c = defautColor;

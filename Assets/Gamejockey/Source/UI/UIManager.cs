@@ -12,6 +12,10 @@ namespace GameJockey_v4
         public TrackInfos[] tracksInfo;
 
         public GameObject sampleListParentGameObject;
+        public FilterMixer mixer;
+        public UIMixerButton cameraLeft, lightLeft, AvatarsLeft, ObjectsLeft, EnvironmentLeft;
+        public UIMixerButton cameraRight, lightRight, AvatarsRight, ObjectsRight, EnvironmentRight;
+        public Color selectedColor, unselectedColor, inactiveColor;
 
         private void Awake()
         {
@@ -36,6 +40,11 @@ namespace GameJockey_v4
                 return;
 
             // TODO create new list
+        }
+
+        public void RefreshFilterUI()
+        {
+        // TODO
         }
     }
 
